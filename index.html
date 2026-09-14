@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#06080a" />
+  <meta name="description" content="暗色沉浸式的一次许愿互动网页。" />
+  <title>一愿枝 Pro · ONE WISH BRANCH</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <canvas id="sky"></canvas>
+  <canvas id="embers"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <main class="app" id="app">
+    <header class="topbar">
+      <div class="left-tools">
+        <button class="ghost" id="customBtn" type="button" data-i18n="custom">自定义</button>
+        <button class="ghost" id="soundBtn" type="button">SOUND OFF</button>
+      </div>
+      <button class="ghost" id="langBtn" type="button">EN</button>
+    </header>
+
+    <section class="stage hero active" id="homeStage" aria-labelledby="mainTitle">
+      <div class="halo"></div>
+      <div class="sigil" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <p class="eyebrow">ONE WISH BRANCH · PRO</p>
+      <h1 id="mainTitle" data-i18n="title">一 愿 枝</h1>
+      <p class="subtitle" id="heroSubtitle" data-i18n="subtitle">你只有一次愿望</p>
+
+      <div class="altar">
+        <div class="moon"></div>
+        <div class="tree-glow"></div>
+        <svg class="hero-branch" viewBox="0 0 820 320" aria-hidden="true">
+          <defs>
+            <filter id="heroGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="5" result="g"/>
+              <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path class="branch-shadow" d="M72 194 C180 186 251 132 354 146 C470 162 571 221 750 116"/>
+          <path class="branch-core" d="M72 194 C180 186 251 132 354 146 C470 162 571 221 750 116"/>
+          <path class="twig" d="M178 175 C164 138 162 102 180 76"/>
+          <path class="twig" d="M250 149 C243 110 246 77 268 52"/>
+          <path class="twig" d="M431 169 C451 124 469 94 499 69"/>
+          <path class="twig" d="M553 198 C574 154 598 126 632 101"/>
+          <path class="twig" d="M631 163 C648 134 672 117 705 102"/>
+          <ellipse class="leaf" cx="176" cy="82" rx="8" ry="30" transform="rotate(-24 176 82)"/>
+          <ellipse class="leaf" cx="266" cy="56" rx="8" ry="28" transform="rotate(12 266 56)"/>
+          <ellipse class="leaf" cx="498" cy="74" rx="8" ry="30" transform="rotate(44 498 74)"/>
+          <ellipse class="leaf" cx="630" cy="104" rx="8" ry="27" transform="rotate(56 630 104)"/>
+          <ellipse class="leaf" cx="702" cy="105" rx="7" ry="24" transform="rotate(70 702 105)"/>
+        </svg>
+        <div class="mist mist-a"></div>
+        <div class="mist mist-b"></div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="primary" id="wishBtn" type="button" data-i18n="wish">开始许愿</button>
+      </div>
+      <p class="footnote" data-i18n="fiction">虚构互动体验 · 结果仅供娱乐</p>
+    </section>
+
+    <section class="stage ritual" id="ritualStage" aria-live="polite">
+      <p class="eyebrow" data-i18n="ritual">THE RITUAL</p>
+      <h2 data-i18n="listen">柳枝正在听</h2>
+      <p class="wish-echo" id="wishEcho"></p>
+      <p class="ritual-copy" data-i18n="ritualHint">长按中央，双手会拉开枝条。松手会重新开始。</p>
+
+      <div class="ritual-scene" id="ritualScene">
+        <div class="energy-ring"></div>
+        <div class="branch-holder" id="branchHolder">
+          <div class="branch branch-left"></div>
+          <div class="branch branch-right"></div>
+          <div class="fracture" id="fracture"></div>
+        </div>
+        <div class="hands-layer">
+          <div class="hand left-hand">
+            <div class="palm"></div>
+            <div class="thumb"></div>
+            <span class="finger f1"></span><span class="finger f2"></span><span class="finger f3"></span><span class="finger f4"></span>
+          </div>
+          <div class="hand right-hand">
+            <div class="palm"></div>
+            <div class="thumb"></div>
+            <span class="finger f1"></span><span class="finger f2"></span><span class="finger f3"></span><span class="finger f4"></span>
+          </div>
+        </div>
+        <div class="hold-runes">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <button class="hold-button" id="holdBtn" type="button" aria-label="Hold">
+        <span class="hold-fill" id="holdFill"></span>
+        <span class="hold-glow"></span>
+        <span class="hold-label" id="holdLabel" data-i18n="hold">按住 3 秒，折下此枝</span>
+      </button>
+      <p class="hint" id="progressText" data-i18n="release">松手会重新开始</p>
+    </section>
+
+    <section class="stage result" id="resultStage" aria-live="polite">
+      <p class="eyebrow" data-i18n="verdict">THE VERDICT</p>
+      <div class="result-card">
+        <h2 id="resultTitle">愿望已被听见</h2>
+        <p class="result-copy" id="resultCopy"></p>
+        <div class="oracle-meta">
+          <div class="oracle-block">
+            <span class="label" data-i18n="omenLabel">征兆</span>
+            <strong id="omenText">月光偏盛</strong>
+          </div>
+          <div class="oracle-block">
+            <span class="label" data-i18n="priceLabel">代价</span>
+            <strong id="priceText">需要等待</strong>
+          </div>
+        </div>
+        <div class="rule"></div>
+        <p class="result-wish" id="resultWish"></p>
+      </div>
+      <div class="result-actions">
+        <button class="secondary" id="shareBtn" type="button" data-i18n="copy">复制结果</button>
+        <button class="secondary" id="saveBtn" type="button" data-i18n="saveImage">保存结果图</button>
+        <button class="text-button" id="homeBtn" type="button" data-i18n="back">返回首页</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="wishDialog">
+    <form method="dialog" class="panel" id="wishForm">
+      <button class="close" value="cancel" aria-label="close">×</button>
+      <p class="eyebrow">ONE WISH</p>
+      <h2 data-i18n="write">写下你的愿望</h2>
+      <p class="dialog-copy" data-i18n="warning">写下后，仪式不会替你修改它。愿望将只属于这一次。</p>
+      <textarea id="wishInput" maxlength="120" placeholder="我希望……" data-placeholder-zh="我希望……" data-placeholder-en="I wish…"></textarea>
+      <div class="dialog-meta">
+        <span id="count">0 / 120</span>
+      </div>
+      <button class="primary full" id="submitWish" value="default" type="submit" data-i18n="continue">继续</button>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="customDialog">
+    <form method="dialog" class="panel compact" id="customForm">
+      <button class="close" value="cancel" aria-label="close">×</button>
+      <p class="eyebrow">CUSTOMIZE</p>
+      <h2 data-i18n="customize">自定义页面</h2>
+      <label>
+        <span data-i18n="siteName">中文标题</span>
+        <input id="customTitle" maxlength="18" value="一 愿 枝" />
+      </label>
+      <label>
+        <span data-i18n="tagline">副标题</span>
+        <input id="customSubtitle" maxlength="36" value="你只有一次愿望" />
+      </label>
+      <label>
+        <span data-i18n="accentText">按钮文案</span>
+        <input id="customWishButton" maxlength="16" value="开始许愿" />
+      </label>
+      <button class="primary full" value="default" type="submit" data-i18n="save">保存</button>
+    </form>
+  </dialog>
+
+  <script src="./main.js" defer></script>
+</body>
+</html>
