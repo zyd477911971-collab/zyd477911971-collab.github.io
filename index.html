@@ -17,7 +17,6 @@
   <main class="app" id="app">
     <header class="topbar">
       <div class="left-tools">
-        <button class="ghost" id="customBtn" type="button" data-i18n="custom">自定义</button>
         <button class="ghost" id="soundBtn" type="button">SOUND OFF</button>
       </div>
       <button class="ghost" id="langBtn" type="button">EN</button>
@@ -140,27 +139,6 @@
         <span id="count">0 / 120</span>
       </div>
       <button class="primary full" id="submitWish" value="default" type="submit" data-i18n="continue">继续</button>
-    </form>
-  </dialog>
-
-  <dialog class="modal" id="customDialog">
-    <form method="dialog" class="panel compact" id="customForm">
-      <button class="close" value="cancel" aria-label="close">×</button>
-      <p class="eyebrow">CUSTOMIZE</p>
-      <h2 data-i18n="customize">自定义页面</h2>
-      <label>
-        <span data-i18n="siteName">中文标题</span>
-        <input id="customTitle" maxlength="18" value="一 愿 枝" />
-      </label>
-      <label>
-        <span data-i18n="tagline">副标题</span>
-        <input id="customSubtitle" maxlength="36" value="你只有一次愿望" />
-      </label>
-      <label>
-        <span data-i18n="accentText">按钮文案</span>
-        <input id="customWishButton" maxlength="16" value="开始许愿" />
-      </label>
-      <button class="primary full" value="default" type="submit" data-i18n="save">保存</button>
     </form>
   </dialog>
 
