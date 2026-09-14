@@ -1,1 +1,49 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0a0a0b"><title>BLACK SWAN · 黑天鹅 | 足球精选</title><style>body{margin:0;background:#0a0a0b;color:#f5f1e8;font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:980px;margin:auto;padding:48px 20px}header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid #2a2a2d;padding-bottom:20px}.brand{font-size:34px;font-weight:800;letter-spacing:.08em}.sub{color:#b9b3a5;margin-top:8px}.tag{color:#c7a967;font-size:13px;letter-spacing:.18em}.section{margin-top:42px}.section h2{font-size:22px;margin:0 0 16px}.pick{border:1px solid #2f2f33;border-radius:18px;padding:24px;background:#111214}.meta{font-size:13px;color:#8f8b82}.teams{font-size:25px;font-weight:700;margin:14px 0}.view{font-size:30px;color:#d7b86e;font-weight:800;margin:8px 0 14px}.note{color:#b9b3a5;line-height:1.7}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.stat{border:1px solid #26272a;border-radius:14px;padding:18px;background:#0f1012}.stat b{display:block;font-size:24px;margin-top:6px}.footer{margin-top:48px;padding-top:18px;border-top:1px solid #222;color:#78756e;font-size:12px;line-height:1.7}@media(max-width:650px){.brand{font-size:28px}.teams{font-size:21px}.view{font-size:26px}.stats{grid-template-columns:1fr}}</style></head><body><main><header><div><div class="brand">BLACK SWAN · 黑天鹅</div><div class="sub">足球精选 · 数据分析 · 概率判断</div></div><div class="tag">FIND THE EDGE.</div></header><section class="section"><h2>今日精选</h2><article class="pick"><div class="meta">足球 · 待赛</div><div class="teams">利兹联 vs 纽卡斯尔</div><div class="view">黑天鹅观点：利兹联胜</div><div class="note">本条为赛前公开预测。开赛后将保留原始方向，并在赛后更新结果。</div></article></section><section class="section"><h2>公开战绩</h2><div class="stats"><div class="stat">总预测<b>1</b></div><div class="stat">已结算<b>0</b></div><div class="stat">待赛<b>1</b></div></div></section><div class="footer">预测不是承诺；所有内容均为概率判断与体育数据分析，不构成保证。所有公开预测在比赛开始后保留，包括错误预测。</div></main></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b0c">
+  <meta name="description" content="BLACK SWAN 黑天鹅：每日最多两场精选足球预测，公开历史记录与长期表现。">
+  <title>BLACK SWAN · 黑天鹅 | 足球精选</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090b0c'/%3E%3Cpath d='M16 42c9 5 23 5 31-3-9 2-16-1-18-7-4-11 3-20 13-19-7 4-9 12-5 18 4 7 13 9 18 6-4 12-18 18-32 14-4-1-6-4-7-9Z' fill='%23b9a77c'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="ambient" aria-hidden="true"></canvas>
+  <div class="swan-backdrop" aria-hidden="true"></div>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="BLACK SWAN 首页"><span class="brand-mark">◕</span><span><strong>BLACK SWAN</strong><small>黑 天 鹅</small></span></a>
+      <nav aria-label="主导航"><a href="#today" class="active">今日预测</a><a href="#history">历史记录</a><a href="#statistics">数据统计</a></nav>
+      <div class="header-side"><span class="live-dot"></span> FOOTBALL ONLY <span class="header-line"></span> EST. 2026</div>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="eyebrow"><span>INDEPENDENT FOOTBALL SELECTION</span><span class="eyebrow-rule"></span><span>01 / 03</span></div>
+        <h1 id="intro-title">静待机会<span class="gold-stop">.</span></h1>
+        <div class="intro-bottom"><p>每天至多两场。每个判断，都留下可追溯的记录。</p><div class="date-box"><span>今日日期</span><strong id="date-label">—</strong></div></div>
+      </section>
+
+      <section class="today section-block" id="today" aria-labelledby="today-title">
+        <div class="section-heading"><div><span class="section-kicker">01 / TODAY'S SELECTION</span><h2 id="today-title">今日预测</h2></div><span class="section-note"><span class="tiny-diamond"></span> 每日上限 02 场</span></div>
+        <div class="selection-grid" id="selection-grid"></div>
+        <p class="section-footnote">比赛时间为北京时间。历史记录与数据统计暂为演示数据。</p>
+      </section>
+
+      <section class="history section-block" id="history" aria-labelledby="history-title">
+        <div class="section-heading"><div><span class="section-kicker">02 / TRACK RECORD</span><h2 id="history-title">历史记录</h2></div><span class="section-note">公开记录 · 示例</span></div>
+        <div class="history-table-wrap"><table><thead><tr><th>日期 / 联赛</th><th>对阵</th><th>预测方向</th><th>赔率</th><th>结果</th></tr></thead><tbody id="history-body"></tbody></table></div>
+      </section>
+
+      <section class="statistics section-block" id="statistics" aria-labelledby="statistics-title">
+        <div class="section-heading"><div><span class="section-kicker">03 / PERFORMANCE</span><h2 id="statistics-title">数据统计</h2></div><span class="section-note">示例数据 · 按已结算场次统计</span></div>
+        <div class="stats-layout"><div class="primary-stat"><span>累计收益率 / ROI</span><strong id="roi-value">—</strong><p>按每场固定 1 单位投入计算</p><div class="sparkline" id="sparkline" aria-label="累计收益率走势"></div></div><div class="stats-grid"><div><span>总预测</span><strong id="total-value">—</strong><small>已结算场次</small></div><div><span>命中率</span><strong id="hit-value">—</strong><small>赢场占比</small></div><div><span>月收益</span><strong id="monthly-value">—</strong><small id="monthly-period">—</small></div><div><span>近 10 场</span><strong id="recent-value">—</strong><small>赢 / 输</small></div></div></div>
+      </section>
+    </main>
+    <footer><span>BLACK SWAN <i>·</i> FOOTBALL INTELLIGENCE</span><span>历史记录与数据统计暂为演示数据</span><a href="#top">返回顶部 ↑</a></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
