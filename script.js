@@ -1,5 +1,5 @@
 const selections=[
-  {league:'西甲 · LALIGA',home:'巴列卡诺',away:'西班牙人',pick:'西班牙人 不败',odds:null,time:'2026-09-16 01:00',published:'2026-09-15 11:23'}
+  {league:'西甲 · LALIGA',home:'巴列卡诺',away:'西班牙人',pick:'西班牙人 不败',odds:1.70,time:'2026-09-16 01:00',published:'2026-09-15 11:23'}
 ];
 const history=[
   {date:'2026-09-15',league:'英超',match:'利兹联 4–1 纽卡斯尔',pick:'利兹联 胜',odds:2.32,result:'WIN',recordAt:'发布 09-14 19:43'},
