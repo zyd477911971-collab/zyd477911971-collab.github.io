@@ -34,6 +34,25 @@ function render(){
 }
 render();
 
+// Navigation: smooth section jumps + active section tracking.
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+const navLinks=[...document.querySelectorAll('.site-header nav a[href^="#"]')];
+const trackedSections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function setActiveNav(id){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===`#${id}`));}
+navLinks.forEach(a=>a.addEventListener('click',e=>{
+  const target=document.querySelector(a.getAttribute('href'));if(!target)return;
+  e.preventDefault();setActiveNav(target.id);
+  target.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
+  history.replaceState(null,'',`#${target.id}`);
+}));
+if('IntersectionObserver' in window){
+  const sectionObserver=new IntersectionObserver(entries=>{
+    const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+    if(visible[0])setActiveNav(visible[0].target.id);
+  },{root:null,rootMargin:'-18% 0px -62% 0px',threshold:[0,.01]});
+  trackedSections.forEach(section=>sectionObserver.observe(section));
+}
+
 const canvas=$('#ambient'),ctx=canvas.getContext('2d');
 let particles=[],w=0,h=0,mouse={x:0,y:0},frame=0;
 const mobileParticles=()=>innerWidth<=720;
@@ -59,4 +78,4 @@ function draw(){
   }
   frame++;requestAnimationFrame(draw);
 }
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches)draw();
+if(!reduceMotion.matches)draw();
