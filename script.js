@@ -13,24 +13,48 @@ const history=[
 ];
 const $=s=>document.querySelector(s);
 function render(){
-  $('#date-label').textContent=new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Shanghai'}).format(new Date()).replaceAll('/','.');
+  const now=new Date();
+  $('#date-label').textContent=new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Shanghai'}).format(now).replaceAll('/','.');
   $('#selection-grid').innerHTML=selections.slice(0,2).map((s,i)=>`<article class="selection-card"><div class="card-top"><span class="card-index">SELECTION 0${i+1}</span><span class="card-league">${s.league}</span></div><h3 class="card-match">${s.home}<em>VS</em>${s.away}</h3><div class="card-pick"><span>预测方向</span><strong>${s.pick}</strong><b>${s.odds?`@ ${s.odds}`:'赔率待补'}</b></div><div class="card-bottom"><span>比赛时间 <time>${s.time}</time></span><span>发布 ${s.published}</span></div></article>`).join('')||'<div class="empty-state">NO POSITION TODAY<br>今日无符合标准的机会</div>';
   $('#history-body').innerHTML=history.map(r=>`<tr><td>${r.date}<small>${r.league}${r.recordAt?` · ${r.recordAt}`:''}</small></td><td>${r.match}</td><td>${r.pick}</td><td>${Number.isFinite(r.odds)?`@ ${r.odds.toFixed(2)}`:'—'}</td><td><span class="result ${r.result.toLowerCase()}">${r.result}</span></td></tr>`).join('');
-  const wins=history.filter(r=>r.result==='WIN').length, losses=history.filter(r=>r.result==='LOSS').length;
+
+  const wins=history.filter(r=>r.result==='WIN').length,losses=history.filter(r=>r.result==='LOSS').length;
   const priced=history.filter(r=>Number.isFinite(r.odds));
   const profit=priced.reduce((a,r)=>a+(r.result==='WIN'?r.odds-1:-1),0);
-  $('#roi-value').textContent=priced.length?`${profit>=0?'+':''}${(profit/priced.length*100).toFixed(1)}%`:'—';
-  const roiNote=document.querySelector('.primary-stat p');if(roiNote)roiNote.textContent=priced.length===history.length?`全部 ${priced.length} 场按固定 1 单位投入计算`:`仅按 ${priced.length} 场有赔率记录、每场固定 1 单位计算`;
-  $('#total-value').textContent=String(history.length).padStart(2,'0');
-  $('#hit-value').textContent=(wins+losses)?`${(wins/(wins+losses)*100).toFixed(1)}%`:'—';
-  const latestMonth=history[0]?.date.slice(0,7);
-  const monthly=priced.filter(r=>r.date.startsWith(latestMonth));
+  const roi=priced.length?profit/priced.length*100:null;
+  $('#roi-value').textContent=roi===null?'—':`${profit>=0?'+':''}${roi.toFixed(1)}%`;
+  const roiNote=document.querySelector('.primary-stat p');
+  if(roiNote)roiNote.textContent=priced.length?`累计 ${profit>=0?'+':''}${profit.toFixed(2)}U · ${priced.length} 场 · 固定 1U / 场`:'暂无可计算赔率记录';
+
+  const monthParts=new Intl.DateTimeFormat('en-US',{year:'numeric',month:'2-digit',timeZone:'Asia/Shanghai'}).formatToParts(now);
+  const year=monthParts.find(p=>p.type==='year').value,month=monthParts.find(p=>p.type==='month').value;
+  const currentMonth=`${year}-${month}`;
+  const monthlyAll=history.filter(r=>r.date.startsWith(currentMonth));
+  const monthly=monthlyAll.filter(r=>Number.isFinite(r.odds));
   const monthlyProfit=monthly.reduce((a,r)=>a+(r.result==='WIN'?r.odds-1:-1),0);
-  $('#monthly-value').textContent=monthly.length?`${monthlyProfit>=0?'+':''}${(monthlyProfit/monthly.length*100).toFixed(1)}%`:'—';
-  $('#monthly-period').textContent=latestMonth?`${latestMonth.replace('-','.')} · ${monthly.length} 场已结算`:'—';
-  const recent=history.slice(0,10);
-  $('#recent-value').textContent=`${recent.filter(r=>r.result==='WIN').length} / ${recent.filter(r=>r.result==='LOSS').length}`;
-  let running=0;const series=[0,...[...priced].reverse().map(r=>(running+=r.result==='WIN'?r.odds-1:-1))];if(series.length>1){const lo=Math.min(...series)-.5,hi=Math.max(...series)+.5;const points=series.map((v,i)=>`${i/(series.length-1)*100},${70-(v-lo)/(hi-lo)*56}`).join(' ');$('#sparkline').innerHTML=`<svg viewBox="0 0 100 83" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" fill="none" stroke="#bba77d" stroke-width=".65" vector-effect="non-scaling-stroke"/></svg>`}else{$('#sparkline').innerHTML=''};
+  const monthlyRoi=monthly.length?monthlyProfit/monthly.length*100:null;
+
+  const statCells=[...document.querySelectorAll('.stats-grid>div')];
+  if(statCells.length>=4){
+    statCells[0].querySelector('span').textContent='总场次';
+    statCells[0].querySelector('strong').textContent=String(history.length).padStart(2,'0');
+    statCells[0].querySelector('small').textContent='全部已结算';
+
+    statCells[1].querySelector('span').textContent='本月场次';
+    statCells[1].querySelector('strong').textContent=String(monthlyAll.length).padStart(2,'0');
+    statCells[1].querySelector('small').textContent=`${currentMonth.replace('-','.')} · 已结算`;
+
+    statCells[2].querySelector('span').textContent='总命中率';
+    statCells[2].querySelector('strong').textContent=(wins+losses)?`${(wins/(wins+losses)*100).toFixed(1)}%`:'—';
+    statCells[2].querySelector('small').textContent=(wins+losses)?`${wins} 胜 / ${losses} 负`:'暂无记录';
+
+    statCells[3].querySelector('span').textContent='本月收益';
+    statCells[3].querySelector('strong').textContent=monthlyRoi===null?'—':`${monthlyProfit>=0?'+':''}${monthlyRoi.toFixed(1)}%`;
+    statCells[3].querySelector('small').textContent=monthly.length?`${monthlyProfit>=0?'+':''}${monthlyProfit.toFixed(2)}U · 固定 1U / 场`:'暂无可计算记录';
+  }
+
+  let running=0;const series=[0,...[...priced].reverse().map(r=>(running+=r.result==='WIN'?r.odds-1:-1))];
+  if(series.length>1){const lo=Math.min(...series)-.5,hi=Math.max(...series)+.5;const points=series.map((v,i)=>`${i/(series.length-1)*100},${70-(v-lo)/(hi-lo)*56}`).join(' ');$('#sparkline').innerHTML=`<svg viewBox="0 0 100 83" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" fill="none" stroke="#bba77d" stroke-width=".65" vector-effect="non-scaling-stroke"/></svg>`}else{$('#sparkline').innerHTML=''};
 }
 render();
 
