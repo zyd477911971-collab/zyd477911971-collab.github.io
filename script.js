@@ -1,13 +1,13 @@
 const selections=[];
 const history=[
   {date:'2026-09-15',league:'英超',match:'利兹联 4–1 纽卡斯尔',pick:'利兹联 胜',odds:2.32,result:'WIN',recordAt:'发布 09-14 19:43'},
-  {date:'2026-09-13',league:'英超',match:'曼联 0–1 曼城',pick:'负',odds:null,result:'WIN',recordAt:'记录 约20:00'},
-  {date:'2026-09-13',league:'意甲',match:'那不勒斯 1–0 博洛尼亚',pick:'胜',odds:null,result:'WIN',recordAt:'记录 约20:00'},
-  {date:'2026-09-13',league:'日职',match:'东京绿茵 1–1 千叶市原',pick:'负',odds:null,result:'LOSS',recordAt:'记录 约09:10'},
-  {date:'2026-09-12',league:'西甲',match:'奥萨苏纳 0–2 西班牙人',pick:'平',odds:null,result:'LOSS',recordAt:'记录 约22:02'},
-  {date:'2026-09-12',league:'英超',match:'阿斯顿维拉 1–2 诺丁汉森林',pick:'平',odds:null,result:'LOSS',recordAt:'记录 约21:58'},
-  {date:'2026-09-12',league:'日职',match:'大阪钢巴 0–2 东京FC',pick:'负',odds:null,result:'WIN',recordAt:'记录 约10:50'},
-  {date:'2026-09-12',league:'韩K联',match:'全北现代 1–2 首尔FC',pick:'负',odds:null,result:'WIN',recordAt:'记录 约10:47'}
+  {date:'2026-09-13',league:'英超',match:'曼联 0–1 曼城',pick:'负',odds:2.19,result:'WIN',recordAt:'记录 约20:00'},
+  {date:'2026-09-13',league:'意甲',match:'那不勒斯 1–0 博洛尼亚',pick:'胜',odds:1.89,result:'WIN',recordAt:'记录 约20:00'},
+  {date:'2026-09-13',league:'日职',match:'东京绿茵 1–1 千叶市原',pick:'负',odds:3.16,result:'LOSS',recordAt:'记录 约09:10'},
+  {date:'2026-09-12',league:'西甲',match:'奥萨苏纳 0–2 西班牙人',pick:'平',odds:3.18,result:'LOSS',recordAt:'记录 约22:02'},
+  {date:'2026-09-12',league:'英超',match:'阿斯顿维拉 1–2 诺丁汉森林',pick:'平',odds:3.41,result:'LOSS',recordAt:'记录 约21:58'},
+  {date:'2026-09-12',league:'日职',match:'大阪钢巴 0–2 东京FC',pick:'负',odds:1.91,result:'WIN',recordAt:'记录 约10:50'},
+  {date:'2026-09-12',league:'韩K联',match:'全北现代 1–2 首尔FC',pick:'负',odds:2.36,result:'WIN',recordAt:'记录 约10:47'}
 ];
 const $=s=>document.querySelector(s);
 function render(){
@@ -18,14 +18,14 @@ function render(){
   const priced=history.filter(r=>Number.isFinite(r.odds));
   const profit=priced.reduce((a,r)=>a+(r.result==='WIN'?r.odds-1:-1),0);
   $('#roi-value').textContent=priced.length?`${profit>=0?'+':''}${(profit/priced.length*100).toFixed(1)}%`:'—';
-  const roiNote=document.querySelector('.primary-stat p');if(roiNote)roiNote.textContent=priced.length?`仅按 ${priced.length} 场有赔率记录、每场固定 1 单位计算`:'暂无完整赔率记录';
+  const roiNote=document.querySelector('.primary-stat p');if(roiNote)roiNote.textContent=priced.length===history.length?`全部 ${priced.length} 场按固定 1 单位投入计算`:`仅按 ${priced.length} 场有赔率记录、每场固定 1 单位计算`;
   $('#total-value').textContent=String(history.length).padStart(2,'0');
   $('#hit-value').textContent=(wins+losses)?`${(wins/(wins+losses)*100).toFixed(1)}%`:'—';
   const latestMonth=history[0]?.date.slice(0,7);
   const monthly=priced.filter(r=>r.date.startsWith(latestMonth));
   const monthlyProfit=monthly.reduce((a,r)=>a+(r.result==='WIN'?r.odds-1:-1),0);
   $('#monthly-value').textContent=monthly.length?`${monthlyProfit>=0?'+':''}${(monthlyProfit/monthly.length*100).toFixed(1)}%`:'—';
-  $('#monthly-period').textContent=latestMonth?`${latestMonth.replace('-','.')} · ${monthly.length} 场有赔率`:'—';
+  $('#monthly-period').textContent=latestMonth?`${latestMonth.replace('-','.')} · ${monthly.length} 场已结算`:'—';
   const recent=history.slice(0,10);
   $('#recent-value').textContent=`${recent.filter(r=>r.result==='WIN').length} / ${recent.filter(r=>r.result==='LOSS').length}`;
   let running=0;const series=[0,...[...priced].reverse().map(r=>(running+=r.result==='WIN'?r.odds-1:-1))];if(series.length>1){const lo=Math.min(...series)-.5,hi=Math.max(...series)+.5;const points=series.map((v,i)=>`${i/(series.length-1)*100},${70-(v-lo)/(hi-lo)*56}`).join(' ');$('#sparkline').innerHTML=`<svg viewBox="0 0 100 83" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" fill="none" stroke="#bba77d" stroke-width=".65" vector-effect="non-scaling-stroke"/></svg>`}else{$('#sparkline').innerHTML=''};
