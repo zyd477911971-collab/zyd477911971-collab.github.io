@@ -1,17 +1,6 @@
-const selections=[
-  {league:'英超 · PREMIER LEAGUE',time:'2026-09-15 03:00',home:'利兹联',away:'纽卡斯尔',pick:'利兹联 胜',odds:'2.32',published:'2026-09-14 19:43'}
-];
+const selections=[];
 const history=[
-  {date:'2026-09-12',league:'英超',match:'阿森纳 VS 纽卡斯尔',pick:'阿森纳 -0.5',odds:1.88,result:'WIN'},
-  {date:'2026-09-11',league:'德甲',match:'拜仁慕尼黑 VS 莱比锡',pick:'大于 2.5 球',odds:1.79,result:'WIN'},
-  {date:'2026-09-09',league:'欧冠',match:'国际米兰 VS 马德里竞技',pick:'国际米兰 胜',odds:1.92,result:'LOSS'},
-  {date:'2026-09-07',league:'西甲',match:'巴塞罗那 VS 塞维利亚',pick:'塞维利亚 +1.5',odds:1.85,result:'LOSS'},
-  {date:'2026-09-05',league:'法甲',match:'里尔 VS 摩纳哥',pick:'小于 2.5 球',odds:1.93,result:'WIN'},
-  {date:'2026-09-03',league:'英超',match:'热刺 VS 布莱顿',pick:'布莱顿 +0.5',odds:1.87,result:'LOSS'},
-  {date:'2026-09-01',league:'意甲',match:'罗马 VS 亚特兰大',pick:'罗马 0',odds:1.84,result:'WIN'},
-  {date:'2026-08-29',league:'德甲',match:'勒沃库森 VS 多特蒙德',pick:'大于 2.5 球',odds:1.90,result:'WIN'},
-  {date:'2026-08-27',league:'西甲',match:'贝蒂斯 VS 瓦伦西亚',pick:'贝蒂斯 -0.5',odds:1.86,result:'LOSS'},
-  {date:'2026-08-25',league:'英超',match:'曼城 VS 水晶宫',pick:'曼城 -1',odds:1.82,result:'WIN'}
+  {date:'2026-09-15',league:'英超',match:'利兹联 4-1 纽卡斯尔',pick:'利兹联 胜',odds:2.32,result:'WIN'}
 ];
 const $=s=>document.querySelector(s);
 function render(){
