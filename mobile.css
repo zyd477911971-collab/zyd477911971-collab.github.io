@@ -1,4 +1,9 @@
 @media (max-width:720px){
+  .section-block{scroll-margin-top:18px}
+  .site-header nav a{position:relative;padding:8px 2px;touch-action:manipulation;transition:color .2s ease,opacity .2s ease}
+  .site-header nav a:active{opacity:.68}
+  .selection-card{touch-action:manipulation;transition:transform .16s ease,border-color .16s ease,background .16s ease,box-shadow .16s ease}
+  .selection-card:active{transform:scale(.99);border-color:rgba(187,167,125,.72);background:linear-gradient(145deg,rgba(34,38,37,.96),rgba(16,19,20,.92));box-shadow:0 0 0 1px rgba(187,167,125,.08),0 10px 30px rgba(0,0,0,.18)}
   .history-table-wrap{overflow:visible;background:rgba(12,15,16,.68);border-top:1px solid rgba(187,167,125,.45)}
   .history-table-wrap table{min-width:0;width:100%;display:block}
   .history-table-wrap thead{display:none}
@@ -19,4 +24,8 @@
   .history-table-wrap .result.loss:before{content:'✕ 输'}
   .history-table-wrap .result.win{color:#8fbd98;box-shadow:0 0 18px rgba(140,170,145,.10)}
   .history-table-wrap .result.loss{color:#d08f87;box-shadow:0 0 18px rgba(184,142,135,.10)}
+}
+@media (prefers-reduced-motion:reduce){
+  .selection-card,.site-header nav a{transition:none}
+  .selection-card:active{transform:none}
 }
