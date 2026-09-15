@@ -12,11 +12,48 @@ const history=[
   {date:'2026-09-12',league:'韩K联',match:'全北现代 1–2 首尔FC',pick:'负',odds:2.36,result:'WIN',recordAt:'记录 约10:47'}
 ];
 const $=s=>document.querySelector(s);
+const HISTORY_PAGE_SIZE=10;
+let historyPage=1;
+
+function historyRow(r){
+  return `<tr><td>${r.date}<small>${r.league}${r.recordAt?` · ${r.recordAt}`:''}</small></td><td>${r.match}</td><td>${r.pick}</td><td>${Number.isFinite(r.odds)?`@ ${r.odds.toFixed(2)}`:'—'}</td><td><span class="result ${r.result.toLowerCase()}">${r.result}</span></td></tr>`;
+}
+function ensureHistoryPager(){
+  let pager=$('#history-pagination');
+  if(pager)return pager;
+  pager=document.createElement('nav');
+  pager.id='history-pagination';
+  pager.className='history-pagination';
+  pager.setAttribute('aria-label','历史记录分页');
+  document.querySelector('.history-table-wrap')?.insertAdjacentElement('afterend',pager);
+  const style=document.createElement('style');
+  style.textContent=`.history-pagination{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:22px}.history-pagination button{min-width:38px;height:38px;padding:0 11px;border:1px solid var(--line);background:rgba(17,21,21,.78);color:var(--muted);font-size:12px;letter-spacing:.04em;cursor:pointer;transition:border-color .18s,color .18s,background .18s}.history-pagination button:hover:not(:disabled),.history-pagination button.active{border-color:rgba(187,167,125,.62);color:var(--gold);background:rgba(187,167,125,.08)}.history-pagination button:disabled{opacity:.3;cursor:default}.history-pagination .page-status{margin:0 5px;color:var(--muted);font-size:11px;letter-spacing:.08em}@media(max-width:720px){.history-pagination{margin-top:18px;gap:5px}.history-pagination button{min-width:36px;height:36px;padding:0 9px}}@media(prefers-reduced-motion:reduce){.history-pagination button{transition:none}}`;
+  document.head.appendChild(style);
+  return pager;
+}
+function renderHistory(){
+  const totalPages=Math.max(1,Math.ceil(history.length/HISTORY_PAGE_SIZE));
+  historyPage=Math.min(Math.max(historyPage,1),totalPages);
+  const start=(historyPage-1)*HISTORY_PAGE_SIZE;
+  $('#history-body').innerHTML=history.slice(start,start+HISTORY_PAGE_SIZE).map(historyRow).join('');
+  const pager=ensureHistoryPager();
+  if(!pager)return;
+  if(totalPages<=1){pager.hidden=true;pager.innerHTML='';return;}
+  pager.hidden=false;
+  const pageButtons=Array.from({length:totalPages},(_,i)=>i+1).map(page=>`<button type="button" data-page="${page}" class="${page===historyPage?'active':''}" ${page===historyPage?'aria-current="page"':''}>${page}</button>`).join('');
+  pager.innerHTML=`<button type="button" data-page="${historyPage-1}" ${historyPage===1?'disabled':''} aria-label="上一页">‹</button>${pageButtons}<span class="page-status">${historyPage} / ${totalPages}</span><button type="button" data-page="${historyPage+1}" ${historyPage===totalPages?'disabled':''} aria-label="下一页">›</button>`;
+  pager.querySelectorAll('button[data-page]').forEach(button=>button.addEventListener('click',()=>{
+    const next=Number(button.dataset.page);if(!Number.isInteger(next)||next<1||next>totalPages||next===historyPage)return;
+    historyPage=next;renderHistory();
+    document.querySelector('#history')?.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
+  }));
+}
+
 function render(){
   const now=new Date();
   $('#date-label').textContent=new Intl.DateTimeFormat('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',timeZone:'Asia/Shanghai'}).format(now).replaceAll('/','.');
   $('#selection-grid').innerHTML=selections.slice(0,2).map((s,i)=>`<article class="selection-card"><div class="card-top"><span class="card-index">SELECTION 0${i+1}</span><span class="card-league">${s.league}</span></div><h3 class="card-match">${s.home}<em>VS</em>${s.away}</h3><div class="card-pick"><span>预测方向</span><strong>${s.pick}</strong><b>${s.odds?`@ ${s.odds}`:'赔率待补'}</b></div><div class="card-bottom"><span>比赛时间 <time>${s.time}</time></span><span>发布 ${s.published}</span></div></article>`).join('')||'<div class="empty-state">NO POSITION TODAY<br>今日无符合标准的机会</div>';
-  $('#history-body').innerHTML=history.map(r=>`<tr><td>${r.date}<small>${r.league}${r.recordAt?` · ${r.recordAt}`:''}</small></td><td>${r.match}</td><td>${r.pick}</td><td>${Number.isFinite(r.odds)?`@ ${r.odds.toFixed(2)}`:'—'}</td><td><span class="result ${r.result.toLowerCase()}">${r.result}</span></td></tr>`).join('');
+  renderHistory();
 
   const wins=history.filter(r=>r.result==='WIN').length,losses=history.filter(r=>r.result==='LOSS').length;
   const priced=history.filter(r=>Number.isFinite(r.odds));
@@ -56,10 +93,10 @@ function render(){
   let running=0;const series=[0,...[...priced].reverse().map(r=>(running+=r.result==='WIN'?r.odds-1:-1))];
   if(series.length>1){const lo=Math.min(...series)-.5,hi=Math.max(...series)+.5;const points=series.map((v,i)=>`${i/(series.length-1)*100},${70-(v-lo)/(hi-lo)*56}`).join(' ');$('#sparkline').innerHTML=`<svg viewBox="0 0 100 83" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" fill="none" stroke="#bba77d" stroke-width=".65" vector-effect="non-scaling-stroke"/></svg>`}else{$('#sparkline').innerHTML=''};
 }
-render();
 
 // Navigation: smooth section jumps + active section tracking.
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+render();
 const navLinks=[...document.querySelectorAll('.site-header nav a[href^="#"]')];
 const trackedSections=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 function setActiveNav(id){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===`#${id}`));}
@@ -67,7 +104,7 @@ navLinks.forEach(a=>a.addEventListener('click',e=>{
   const target=document.querySelector(a.getAttribute('href'));if(!target)return;
   e.preventDefault();setActiveNav(target.id);
   target.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
-  history.replaceState(null,'',`#${target.id}`);
+  window.history.replaceState(null,'',`#${target.id}`);
 }));
 if('IntersectionObserver' in window){
   const sectionObserver=new IntersectionObserver(entries=>{
