@@ -39,7 +39,7 @@ let particles=[],w=0,h=0,mouse={x:0,y:0},frame=0;
 const mobileParticles=()=>innerWidth<=720;
 function makeParticle(){
   const mobile=mobileParticles(),depth=.45+Math.random()*.75;
-  return {x:Math.random()*w,y:Math.random()*h,r:(mobile?.55:.4+Math.random()*(mobile?1.15:.7))*depth,v:(mobile?.11:.1+Math.random()*(mobile?.22:.25))*depth,a:(mobile?.10:.07+Math.random()*(mobile?.19:.13))*depth,phase:Math.random()*Math.PI*2,drift:(Math.random()-.5)*(mobile?.075:.045)};
+  return {x:Math.random()*w,y:Math.random()*h,r:((mobile ? .55 : .4)+Math.random()*(mobile ? 1.15 : .7))*depth,v:((mobile ? .11 : .1)+Math.random()*(mobile ? .22 : .25))*depth,a:((mobile ? .10 : .07)+Math.random()*(mobile ? .19 : .13))*depth,phase:Math.random()*Math.PI*2,drift:(Math.random()-.5)*(mobile ? .075 : .045)};
 }
 function resize(){
   const dpr=Math.min(devicePixelRatio||1,2);
@@ -54,7 +54,7 @@ function draw(){
   for(const p of particles){
     p.y-=p.v*dpr;p.x+=(Math.sin(frame*.006+p.phase)*.045+p.drift)*dpr;
     if(p.y<-4*dpr){p.y=h+2*dpr;p.x=Math.random()*w}if(p.x<-5*dpr)p.x=w+4*dpr;if(p.x>w+5*dpr)p.x=-4*dpr;
-    const twinkle=mobile?.72+.28*Math.sin(frame*.018+p.phase):1;
+    const twinkle=mobile ? .72+.28*Math.sin(frame*.018+p.phase) : 1;
     ctx.beginPath();ctx.arc(p.x+mouse.x*10*dpr,p.y+mouse.y*7*dpr,p.r*dpr,0,Math.PI*2);ctx.fillStyle=`rgba(204,186,143,${Math.max(.025,p.a*twinkle)})`;ctx.fill();
   }
   frame++;requestAnimationFrame(draw);
