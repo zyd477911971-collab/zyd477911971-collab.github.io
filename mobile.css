@@ -1,0 +1,22 @@
+@media (max-width:720px){
+  .history-table-wrap{overflow:visible;background:rgba(12,15,16,.68);border-top:1px solid rgba(187,167,125,.45)}
+  .history-table-wrap table{min-width:0;width:100%;display:block}
+  .history-table-wrap thead{display:none}
+  .history-table-wrap tbody{display:block}
+  .history-table-wrap tr{display:block;position:relative;padding:18px 84px 18px 16px;border-bottom:1px solid var(--line);min-height:116px}
+  .history-table-wrap tr:last-child{border-bottom:0}
+  .history-table-wrap td{display:block;border:0;padding:0;color:#d7d9d4}
+  .history-table-wrap td:first-child{font-size:12px;color:var(--gold);margin-bottom:9px}
+  .history-table-wrap td:first-child small{display:inline;margin:0 0 0 8px;font-size:11px;color:#8f9490}
+  .history-table-wrap td:nth-child(2){font-size:16px;line-height:1.45;color:#f0eee8;margin-bottom:9px;font-weight:500}
+  .history-table-wrap td:nth-child(3){font-size:13px;color:#c7c9c4;display:inline-block;margin-right:12px}
+  .history-table-wrap td:nth-child(3):before{content:'方向 ';color:#777d79;font-size:11px}
+  .history-table-wrap td:nth-child(4){font-size:13px;color:var(--gold);display:inline-block}
+  .history-table-wrap td:nth-child(5){position:absolute;right:14px;top:50%;transform:translateY(-50%)}
+  .history-table-wrap .result{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;font-size:0;letter-spacing:0;border:1px solid currentColor;background:rgba(10,12,12,.82)}
+  .history-table-wrap .result:before{font-size:18px;font-weight:700}
+  .history-table-wrap .result.win:before{content:'✓ 赢'}
+  .history-table-wrap .result.loss:before{content:'✕ 输'}
+  .history-table-wrap .result.win{color:#8fbd98;box-shadow:0 0 18px rgba(140,170,145,.10)}
+  .history-table-wrap .result.loss{color:#d08f87;box-shadow:0 0 18px rgba(184,142,135,.10)}
+}
