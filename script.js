@@ -33,4 +33,30 @@ function render(){
   let running=0;const series=[0,...[...priced].reverse().map(r=>(running+=r.result==='WIN'?r.odds-1:-1))];if(series.length>1){const lo=Math.min(...series)-.5,hi=Math.max(...series)+.5;const points=series.map((v,i)=>`${i/(series.length-1)*100},${70-(v-lo)/(hi-lo)*56}`).join(' ');$('#sparkline').innerHTML=`<svg viewBox="0 0 100 83" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" fill="none" stroke="#bba77d" stroke-width=".65" vector-effect="non-scaling-stroke"/></svg>`}else{$('#sparkline').innerHTML=''};
 }
 render();
-const canvas=$('#ambient'),ctx=canvas.getContext('2d');let particles=[],w=0,h=0,mouse={x:0,y:0};function resize(){w=canvas.width=innerWidth*devicePixelRatio;h=canvas.height=innerHeight*devicePixelRatio;particles=Array.from({length:Math.min(65,Math.floor(innerWidth/22))},()=>({x:Math.random()*w,y:Math.random()*h,r:(.4+Math.random()*.7)*devicePixelRatio,v:.1+Math.random()*.25,a:.07+Math.random()*.13}))}resize();addEventListener('resize',resize);addEventListener('pointermove',e=>{mouse.x=(e.clientX/innerWidth-.5);mouse.y=(e.clientY/innerHeight-.5);document.documentElement.style.setProperty('--swan-x',`${mouse.x*-13}px`);document.documentElement.style.setProperty('--swan-y',`${mouse.y*-9}px`)});let frame=0;function draw(){ctx.clearRect(0,0,w,h);for(const p of particles){p.y-=p.v*devicePixelRatio;p.x+=Math.sin(frame*.004+p.y*.004)*.06*devicePixelRatio;if(p.y<0){p.y=h;p.x=Math.random()*w}ctx.beginPath();ctx.arc(p.x+mouse.x*12*devicePixelRatio,p.y+mouse.y*9*devicePixelRatio,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(204,186,143,${p.a})`;ctx.fill()}frame++;requestAnimationFrame(draw)}if(!matchMedia('(prefers-reduced-motion: reduce)').matches)draw();
+
+const canvas=$('#ambient'),ctx=canvas.getContext('2d');
+let particles=[],w=0,h=0,mouse={x:0,y:0},frame=0;
+const mobileParticles=()=>innerWidth<=720;
+function makeParticle(){
+  const mobile=mobileParticles(),depth=.45+Math.random()*.75;
+  return {x:Math.random()*w,y:Math.random()*h,r:(mobile?.55:.4+Math.random()*(mobile?1.15:.7))*depth,v:(mobile?.11:.1+Math.random()*(mobile?.22:.25))*depth,a:(mobile?.10:.07+Math.random()*(mobile?.19:.13))*depth,phase:Math.random()*Math.PI*2,drift:(Math.random()-.5)*(mobile?.075:.045)};
+}
+function resize(){
+  const dpr=Math.min(devicePixelRatio||1,2);
+  w=canvas.width=Math.round(innerWidth*dpr);h=canvas.height=Math.round(innerHeight*dpr);
+  const count=mobileParticles()?Math.min(48,Math.max(34,Math.floor(innerWidth/9))):Math.min(65,Math.floor(innerWidth/22));
+  particles=Array.from({length:count},makeParticle);
+}
+resize();addEventListener('resize',resize);
+addEventListener('pointermove',e=>{if(e.pointerType==='mouse'){mouse.x=(e.clientX/innerWidth-.5);mouse.y=(e.clientY/innerHeight-.5);document.documentElement.style.setProperty('--swan-x',`${mouse.x*-13}px`);document.documentElement.style.setProperty('--swan-y',`${mouse.y*-9}px`)}});
+function draw(){
+  ctx.clearRect(0,0,w,h);const mobile=mobileParticles(),dpr=Math.min(devicePixelRatio||1,2);
+  for(const p of particles){
+    p.y-=p.v*dpr;p.x+=(Math.sin(frame*.006+p.phase)*.045+p.drift)*dpr;
+    if(p.y<-4*dpr){p.y=h+2*dpr;p.x=Math.random()*w}if(p.x<-5*dpr)p.x=w+4*dpr;if(p.x>w+5*dpr)p.x=-4*dpr;
+    const twinkle=mobile?.72+.28*Math.sin(frame*.018+p.phase):1;
+    ctx.beginPath();ctx.arc(p.x+mouse.x*10*dpr,p.y+mouse.y*7*dpr,p.r*dpr,0,Math.PI*2);ctx.fillStyle=`rgba(204,186,143,${Math.max(.025,p.a*twinkle)})`;ctx.fill();
+  }
+  frame++;requestAnimationFrame(draw);
+}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)draw();
