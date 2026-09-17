@@ -1,6 +1,4 @@
-const selections=[
-  {league:'西甲',home:'莱万特',away:'毕尔巴鄂竞技',pick:'客胜',odds:1.85,time:'2026-09-17 03:30',published:'2026-09-16 11:07'}
-];
+const selections=[];
 const history=[
   {date:'2026-09-16',league:'亚冠精英',match:'全北现代 2–1 柏太阳神',pick:'客胜',odds:1.85,result:'LOSS',recordAt:'发布 09-16 11:07'},
   {date:'2026-09-16',league:'西甲',match:'巴列卡诺 2–1 西班牙人',pick:'西班牙人 不败',odds:1.70,result:'LOSS',recordAt:'发布 09-15 11:23'},
