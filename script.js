@@ -1,4 +1,6 @@
-const selections=[];
+const selections=[
+  {league:'WNBA',home:'菲尼克斯水星',away:'达拉斯飞翼',pick:'小 172.5',time:'2026-09-20 01:00',published:'2026-09-20 00:32'}
+];
 const history=[
   {date:'2026-09-18',league:'西甲',match:'皇家贝蒂斯 1–0 赫塔费',pick:'主胜',odds:1.60,result:'WIN',recordAt:'发布 09-17 17:38'},
   {date:'2026-09-16',league:'亚冠精英',match:'全北现代 2–1 柏太阳神',pick:'客胜',odds:1.85,result:'LOSS',recordAt:'发布 09-16 11:07'},
