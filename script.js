@@ -1,7 +1,6 @@
-const selections=[
-  {league:'WNBA',home:'菲尼克斯水星',away:'拉斯维加斯王牌',pick:'小 174.5',odds:1.87,time:'2026-09-25 10:00',published:'2026-09-24 16:21'}
-];
+const selections=[];
 const history=[
+  {date:'2026-09-25',league:'WNBA',match:'菲尼克斯水星 82–100 拉斯维加斯王牌',pick:'小 174.5',odds:1.87,result:'LOSS',recordAt:'发布 09-24 16:21'},
   {date:'2026-09-24',league:'WNBA',match:'达拉斯飞翼 103–91 西雅图风暴',pick:'大 171.5',odds:1.87,result:'WIN',recordAt:'发布 09-23 16:07'},
   {date:'2026-09-23',league:'WNBA',match:'康涅狄格太阳 69–79 华盛顿神秘人',pick:'大 157.5',odds:1.77,result:'LOSS',recordAt:'发布 09-22 17:13'},
   {date:'2026-09-22',league:'WNBA',match:'亚特兰大梦想 95–84 纽约自由人',pick:'小 178.5',odds:1.84,result:'LOSS',recordAt:'发布 09-21 11:48'},
