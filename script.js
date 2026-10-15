@@ -33,6 +33,7 @@ const profitOf=rows=>rows.reduce((sum,r)=>sum+(r.result==='WIN'?r.odds-1:-1),0);
 const pct=rows=>rows.length?profitOf(rows)/rows.length*100:null;
 const formatPct=v=>v===null?'—':`${v>=0?'+':''}${v.toFixed(1)}%`;
 const profit=profitOf(priced);
+const predictionHitRate=(wins+losses)?(wins/(wins+losses)*100).toFixed(1)+'%':'—';
 $('#roi-value').textContent=formatPct(pct(priced));
 const roiNote=document.querySelector('.primary-stat p');
 if(roiNote)roiNote.textContent=priced.length?`累计 ${profit>=0?'+':''}${profit.toFixed(2)}U · ${priced.length} 场 · 固定 1U / 场`:'暂无已结算记录';
@@ -45,7 +46,7 @@ if(!byMonth.has(currentMonth))byMonth.set(currentMonth,[]);
 const months=[...byMonth.keys()].sort().reverse();
 const grid=document.querySelector('.stats-grid');
 if(grid){
-  grid.innerHTML=months.map(m=>{const rows=byMonth.get(m),p=profitOf(rows);return `<div class="monthly-return-card"><span>${m.replace('-','年')}月收益</span><strong>${formatPct(pct(rows))}</strong><small>${rows.length} 场 · ${p>=0?'+':''}${p.toFixed(2)}U · 固定 1U / 场</small></div>`;}).join('');
+  grid.innerHTML=`<div class="monthly-return-card"><span>预测命中率</span><strong>${predictionHitRate}</strong><small>已结算胜负记录 · ${wins}胜 ${losses}负</small></div>`+months.map(m=>{const rows=byMonth.get(m),p=profitOf(rows);return `<div class="monthly-return-card"><span>${m.replace('-','年')}月收益率</span><strong>${formatPct(pct(rows))}</strong><small>${rows.length} 场 · ${p>=0?'+':''}${p.toFixed(2)}U · 固定 1U / 场</small></div>`;}).join('');
   grid.style.display='grid';grid.style.gridTemplateColumns='repeat(2,minmax(0,1fr))';grid.style.gap='12px';
 }
 let running=0;const series=[0,...[...priced].reverse().map(r=>(running+=r.result==='WIN'?r.odds-1:-1))];if(series.length>1){const lo=Math.min(...series)-.5,hi=Math.max(...series)+.5;const points=series.map((v,i)=>`${i/(series.length-1)*100},${70-(v-lo)/(hi-lo)*56}`).join(' ');$('#sparkline').innerHTML=`<svg viewBox="0 0 100 83" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" fill="none" stroke="#bba77d" stroke-width=".65" vector-effect="non-scaling-stroke"/></svg>`}else{$('#sparkline').innerHTML=''};}
