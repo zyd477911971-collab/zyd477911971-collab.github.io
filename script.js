@@ -43,7 +43,7 @@ const monthParts=new Intl.DateTimeFormat('en-US',{year:'numeric',month:'2-digit'
 const year=monthParts.find(p=>p.type==='year').value,month=monthParts.find(p=>p.type==='month').value;
 const currentMonth=`${year}-${month}`;
 if(!byMonth.has(currentMonth))byMonth.set(currentMonth,[]);
-const months=[...byMonth.keys()].sort().reverse();
+const months=[...byMonth.keys()].sort();
 const grid=document.querySelector('.stats-grid');
 if(grid){
   grid.innerHTML=`<div class="monthly-return-card"><span>预测命中率</span><strong>${predictionHitRate}</strong><small>已结算胜负记录 · ${wins}胜 ${losses}负</small></div>`+months.map(m=>{const rows=byMonth.get(m),p=profitOf(rows);return `<div class="monthly-return-card"><span>${m.replace('-','年')}月收益率</span><strong>${formatPct(pct(rows))}</strong><small>${rows.length} 场 · ${p>=0?'+':''}${p.toFixed(2)}U · 固定 1U / 场</small></div>`;}).join('');
