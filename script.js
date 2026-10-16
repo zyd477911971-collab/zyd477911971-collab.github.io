@@ -1,8 +1,7 @@
-const selections=[
-  {league:'欧罗巴 · EUROPA',home:'里昂',away:'水晶宫',pick:'里昂 平手盘（0）',odds:1.95,time:'2026-10-16 00:45',published:'2026-10-15 23:34'},
-  {league:'NBA · 季前赛',home:'猛龙',away:'尼克斯',pick:'大 225.5',odds:1.91,time:'2026-10-16 07:30',published:'2026-10-15 23:34'}
-];
+const selections=[];
 const history=[
+  {date:'2026-10-16',league:'NBA季前赛',match:'猛龙 120–122 尼克斯',pick:'大 225.5',odds:1.91,result:'WIN',recordAt:'发布 10-15 23:34'},
+  {date:'2026-10-16',league:'欧罗巴',match:'里昂 3–2 水晶宫',pick:'里昂 平手盘（0）',odds:1.95,result:'WIN',recordAt:'发布 10-15 23:34'},
   {date:'2026-09-28',league:'WNBA',match:'亚特兰大梦想 92–77 华盛顿神秘人',pick:'大 164.5',odds:1.95,result:'WIN',recordAt:'发布 09-28 00:12'},
   {date:'2026-09-25',league:'WNBA',match:'菲尼克斯水星 82–100 拉斯维加斯王牌',pick:'小 174.5',odds:1.87,result:'LOSS',recordAt:'发布 09-24 16:21'},
   {date:'2026-09-24',league:'WNBA',match:'达拉斯飞翼 103–91 西雅图风暴',pick:'大 171.5',odds:1.87,result:'WIN',recordAt:'发布 09-23 16:07'},
