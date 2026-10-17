@@ -1,7 +1,7 @@
 const selections=[
-  {league:'英冠 · CHAMPIONSHIP',home:'德比郡',away:'斯托克城',pick:'斯托克城 客胜',odds:2.40,time:'2026-10-17 22:00',published:'2026-10-17 20:21'}
 ];
 const history=[
+  {date:'2026-10-17',league:'英冠',match:'德比郡 0–1 斯托克城',pick:'斯托克城 客胜',odds:2.40,result:'WIN',recordAt:'发布 10-17 20:21'},
   {date:'2026-10-16',league:'NBA季前赛',match:'猛龙 120–122 尼克斯',pick:'大 225.5',odds:1.91,result:'WIN',recordAt:'发布 10-15 23:34'},
   {date:'2026-10-16',league:'欧罗巴',match:'里昂 3–2 水晶宫',pick:'里昂 平手盘（0）',odds:1.95,result:'WIN',recordAt:'发布 10-15 23:34'},
   {date:'2026-09-28',league:'WNBA',match:'亚特兰大梦想 92–77 华盛顿神秘人',pick:'大 164.5',odds:1.95,result:'WIN',recordAt:'发布 09-28 00:12'},
