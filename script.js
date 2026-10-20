@@ -1,4 +1,5 @@
 const selections=[
+  {league:'NBA',home:'费城76人',away:'纽约尼克斯',pick:'全场小 232.5',odds:1.91,time:'10-21 07:00（北京时间）',published:'10-20 16:04'},
 ];
 const history=[
   {date:'2026-10-17',league:'英冠',match:'德比郡 0–1 斯托克城',pick:'斯托克城 客胜',odds:2.40,result:'WIN',recordAt:'发布 10-17 20:21'},
