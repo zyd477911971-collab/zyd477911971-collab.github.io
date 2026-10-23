@@ -1,7 +1,7 @@
 const selections=[
-  {league:'欧联杯',home:'尤文图斯',away:'雷恩',pick:'尤文图斯 主胜',odds:'1.57',time:'10月23日 00:45（北京）',published:'10-22 22:50 · 公开参考赔率'}
 ];
 const history=[
+  {date:'2026-10-23',league:'欧联杯',match:'尤文图斯 2–2 雷恩',pick:'尤文图斯 主胜',odds:1.57,result:'LOSS',recordAt:'发布 10-22 22:50 · 参考赔率'},
   {date:'2026-10-22',league:'NBA',match:'密尔沃基雄鹿 116–128 华盛顿奇才',pick:'全场小 239.5',odds:1.93,result:'LOSS',recordAt:'发布 10-21 晚间 · 参考赔率'},
   {date:'2026-10-21',league:'NBA',match:'费城76人 106–100 纽约尼克斯',pick:'全场小 232.5',odds:1.91,result:'WIN',recordAt:'发布 10-20 16:04'},
   {date:'2026-10-17',league:'英冠',match:'德比郡 0–1 斯托克城',pick:'斯托克城 客胜',odds:2.40,result:'WIN',recordAt:'发布 10-17 20:21'},
