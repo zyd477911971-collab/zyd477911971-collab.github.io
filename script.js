@@ -1,7 +1,7 @@
 const selections=[
-  {league:'英超',home:'切尔西',away:'托特纳姆热刺',pick:'切尔西 主胜',odds:'1.80',time:'10月25日 00:30（北京）',published:'10-24 晚间 · 公开参考赔率（赛前）'}
 ];
 const history=[
+  {date:'2026-10-25',league:'英超',match:'切尔西 0–2 托特纳姆热刺',pick:'切尔西 主胜',odds:1.80,result:'LOSS',recordAt:'发布 10-24 晚间 · 参考赔率'},
   {date:'2026-10-23',league:'欧联杯',match:'尤文图斯 2–2 雷恩',pick:'尤文图斯 主胜',odds:1.57,result:'LOSS',recordAt:'发布 10-22 22:50 · 参考赔率'},
   {date:'2026-10-22',league:'NBA',match:'密尔沃基雄鹿 116–128 华盛顿奇才',pick:'全场小 239.5',odds:1.93,result:'LOSS',recordAt:'发布 10-21 晚间 · 参考赔率'},
   {date:'2026-10-21',league:'NBA',match:'费城76人 106–100 纽约尼克斯',pick:'全场小 232.5',odds:1.91,result:'WIN',recordAt:'发布 10-20 16:04'},
