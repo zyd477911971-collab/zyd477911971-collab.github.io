@@ -1,4 +1,5 @@
 const selections=[
+  {league:'NBA',home:'费城76人',away:'底特律活塞',pick:'底特律活塞 +2.5',odds:'1.95',time:'10月26日 07:30（北京）',published:'10-25 晚间 · 公开参考赔率（赛前）'}
 ];
 const history=[
   {date:'2026-10-25',league:'英超',match:'切尔西 0–2 托特纳姆热刺',pick:'切尔西 主胜',odds:1.80,result:'LOSS',recordAt:'发布 10-24 晚间 · 参考赔率'},
