@@ -1,4 +1,5 @@
 const selections=[
+  {league:'NBA',home:'洛杉矶湖人',away:'波特兰开拓者',pick:'全场小 236.0',odds:'1.91',time:'10月28日 11:00（北京）',published:'10-27 下午 · 公开参考赔率（赛前）'}
 ];
 const history=[
   {date:'2026-10-26',league:'NBA',match:'费城76人 93–106 底特律活塞',pick:'底特律活塞 +2.5',odds:1.95,result:'WIN',recordAt:'发布 10-25 晚间 · 参考赔率'},
