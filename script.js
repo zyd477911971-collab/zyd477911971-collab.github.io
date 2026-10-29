@@ -1,4 +1,5 @@
 const selections=[
+  {league:'英联杯',home:'埃弗顿',away:'纽卡斯尔联',pick:'埃弗顿 主胜（90分钟）',odds:'2.30',time:'10月30日 03:45（北京）',published:'10-29 赛前 · 公开参考赔率（13/10换算）'},
   {league:'NBA',home:'密尔沃基雄鹿',away:'休斯敦火箭',pick:'密尔沃基雄鹿 +8.5',odds:'1.91',time:'10月29日 08:00（北京）',published:'10-29 赛前 · 公开参考赔率（-110换算）'}
 ];
 const history=[
