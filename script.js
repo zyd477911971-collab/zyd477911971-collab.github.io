@@ -1,7 +1,7 @@
 const selections=[
-  {league:'英超',home:'曼彻斯特城',away:'布莱顿',pick:'曼城 -0.75',odds:'1.85',time:'10月31日 23:00（北京）',published:'10-31 赛前 · 公开参考赔率'}
 ];
 const history=[
+  {date:'2026-10-31',league:'英超',match:'曼彻斯特城 0–1 布莱顿',pick:'曼城 -0.75',odds:1.85,result:'LOSS',recordAt:'发布 10-31 赛前 · 参考赔率'},
   {date:'2026-10-30',league:'英联杯',match:'埃弗顿 3–1 纽卡斯尔联',pick:'埃弗顿 主胜（90分钟）',odds:2.30,result:'WIN',recordAt:'发布 10-29 赛前 · 参考赔率'},
   {date:'2026-10-29',league:'NBA',match:'密尔沃基雄鹿 100–132 休斯敦火箭',pick:'密尔沃基雄鹿 +8.5',odds:1.91,result:'LOSS',recordAt:'发布 10-29 赛前 · 参考赔率'},
   {date:'2026-10-28',league:'NBA',match:'洛杉矶湖人 129–136 波特兰开拓者',pick:'全场小 236.0',odds:1.91,result:'LOSS',recordAt:'发布 10-27 下午 · 参考赔率'},
