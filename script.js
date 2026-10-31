@@ -1,4 +1,5 @@
 const selections=[
+  {league:'英超',home:'曼彻斯特城',away:'布莱顿',pick:'曼城 -0.75',odds:'1.85',time:'10月31日 23:00（北京）',published:'10-31 赛前 · 公开参考赔率'}
 ];
 const history=[
   {date:'2026-10-30',league:'英联杯',match:'埃弗顿 3–1 纽卡斯尔联',pick:'埃弗顿 主胜（90分钟）',odds:2.30,result:'WIN',recordAt:'发布 10-29 赛前 · 参考赔率'},
