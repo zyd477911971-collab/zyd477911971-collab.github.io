@@ -1,4 +1,5 @@
 const selections=[
+  {league:'英超',home:'利物浦',away:'阿森纳',pick:'全场小 2.5球',odds:'1.91',time:'11月2日 00:30（北京）',published:'11-01 赛前 · 公开参考赔率（bet365）'}
 ];
 const history=[
   {date:'2026-10-31',league:'英超',match:'曼彻斯特城 0–1 布莱顿',pick:'曼城 -0.75',odds:1.85,result:'LOSS',recordAt:'发布 10-31 赛前 · 参考赔率'},
