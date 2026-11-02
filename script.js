@@ -1,4 +1,5 @@
 const selections=[
+  {league:'NBA',home:'夏洛特黄蜂',away:'底特律活塞',pick:'底特律活塞 -3.5',odds:'1.91',time:'11月3日 08:30（北京）',published:'11-02 赛前 · 公开参考盘口（-110换算）'}
 ];
 const history=[
   {date:'2026-11-02',league:'英超',match:'利物浦 0–1 阿森纳',pick:'全场小 2.5球',odds:1.91,result:'WIN',recordAt:'发布 11-01 赛前 · 参考赔率'},
