@@ -1,4 +1,5 @@
 const selections=[
+  {league:'欧冠',home:'博德闪耀',away:'里尔',pick:'博德闪耀 主胜（90分钟）',odds:'1.87',time:'11月4日 04:00（北京）',published:'11-03 赛前 · 公开参考赔率（Betano）'}
 ];
 const history=[
   {date:'2026-11-03',league:'NBA',match:'夏洛特黄蜂 91–124 底特律活塞',pick:'底特律活塞 -3.5',odds:1.91,result:'WIN',recordAt:'发布 11-02 赛前 · 参考赔率'},
