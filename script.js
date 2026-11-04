@@ -1,5 +1,6 @@
 const selections=[
-  {league:'欧冠',home:'波尔图',away:'那不勒斯',pick:'波尔图 主胜（90分钟）',odds:'1.98',time:'11月5日 04:00（北京）',published:'11-04 赛前 · 公开参考赔率（Smarkets，11:08记录）'}
+  {league:'欧冠',home:'波尔图',away:'那不勒斯',pick:'波尔图 主胜（90分钟）',odds:'1.98',time:'11月5日 04:00（北京）',published:'11-04 赛前 · 公开参考赔率（Smarkets，11:08记录）'},
+  {league:'NBA',home:'底特律活塞',away:'费城76人',pick:'底特律活塞 -1.5',odds:'1.91',time:'11月5日 08:00（北京）',published:'11-04 赛前 · 公开参考盘口（-110换算）'}
 ];
 const history=[
   {date:'2026-11-04',league:'欧冠',match:'博德闪耀 0–0 里尔',pick:'博德闪耀 主胜（90分钟）',odds:1.87,result:'LOSS',recordAt:'发布 11-03 赛前 · 参考赔率'},
