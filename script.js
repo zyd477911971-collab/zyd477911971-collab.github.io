@@ -1,4 +1,6 @@
 const selections=[
+  {league:'NBA',home:'亚特兰大老鹰',away:'布鲁克林篮网',pick:'亚特兰大老鹰 -6.5',odds:'1.93',time:'11月8日 08:30（北京）',published:'11-07 赛前 · 公开参考盘口（约-108换算）'},
+  {league:'英超',home:'富勒姆',away:'纽卡斯尔联',pick:'富勒姆 主胜（90分钟）',odds:'2.05',time:'11月7日 23:00（北京）',published:'11-07 赛前 · 公开参考赔率（21/20换算）'}
 ];
 const history=[
   {date:'2026-11-06',league:'NBA',match:'菲尼克斯太阳 117–104 奥兰多魔术',pick:'菲尼克斯太阳 -1.5',odds:1.90,result:'WIN',recordAt:'发布 11-05 赛前 · 参考赔率'},
