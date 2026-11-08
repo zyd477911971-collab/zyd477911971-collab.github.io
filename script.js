@@ -1,8 +1,8 @@
 const selections=[
-  {league:'NBA',home:'亚特兰大老鹰',away:'布鲁克林篮网',pick:'亚特兰大老鹰 -6.5',odds:'1.93',time:'11月8日 08:30（北京）',published:'11-07 赛前 · 公开参考盘口（约-108换算）'},
-  {league:'英超',home:'富勒姆',away:'纽卡斯尔联',pick:'富勒姆 主胜（90分钟）',odds:'2.05',time:'11月7日 23:00（北京）',published:'11-07 赛前 · 公开参考赔率（21/20换算）'}
 ];
 const history=[
+  {date:'2026-11-08',league:'NBA',match:'亚特兰大老鹰 124–121 布鲁克林篮网',pick:'亚特兰大老鹰 -6.5',odds:1.93,result:'LOSS',recordAt:'发布 11-07 赛前 · 参考赔率'},
+  {date:'2026-11-07',league:'英超',match:'富勒姆 1–1 纽卡斯尔联',pick:'富勒姆 主胜（90分钟）',odds:2.05,result:'LOSS',recordAt:'发布 11-07 赛前 · 参考赔率'},
   {date:'2026-11-06',league:'NBA',match:'菲尼克斯太阳 117–104 奥兰多魔术',pick:'菲尼克斯太阳 -1.5',odds:1.90,result:'WIN',recordAt:'发布 11-05 赛前 · 参考赔率'},
   {date:'2026-11-05',league:'NBA',match:'底特律活塞 106–112 费城76人',pick:'底特律活塞 -1.5',odds:1.91,result:'LOSS',recordAt:'发布 11-04 赛前 · 参考赔率'},
   {date:'2026-11-05',league:'欧冠',match:'波尔图 4–1 那不勒斯',pick:'波尔图 主胜（90分钟）',odds:1.98,result:'WIN',recordAt:'发布 11-04 赛前 · 参考赔率'},
