@@ -1,7 +1,7 @@
 const selections=[
-  {league:'英超',home:'布莱顿',away:'布伦特福德',pick:'布莱顿 主胜（90分钟）',odds:'1.95',time:'11月8日 22:00（北京）',published:'11-08 赛前 · 公开参考赔率（Betfair赛前报价，非实时锁价）'}
 ];
 const history=[
+  {date:'2026-11-08',league:'英超',match:'布莱顿 2–0 布伦特福德',pick:'布莱顿 主胜（90分钟）',odds:1.95,result:'WIN',recordAt:'发布 11-08 赛前 · 参考赔率'},
   {date:'2026-11-08',league:'NBA',match:'亚特兰大老鹰 124–121 布鲁克林篮网',pick:'亚特兰大老鹰 -6.5',odds:1.93,result:'LOSS',recordAt:'发布 11-07 赛前 · 参考赔率'},
   {date:'2026-11-07',league:'英超',match:'富勒姆 1–1 纽卡斯尔联',pick:'富勒姆 主胜（90分钟）',odds:2.05,result:'LOSS',recordAt:'发布 11-07 赛前 · 参考赔率'},
   {date:'2026-11-06',league:'NBA',match:'菲尼克斯太阳 117–104 奥兰多魔术',pick:'菲尼克斯太阳 -1.5',odds:1.90,result:'WIN',recordAt:'发布 11-05 赛前 · 参考赔率'},
