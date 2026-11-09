@@ -1,4 +1,5 @@
 const selections=[
+  {league:'NBA',home:'夏洛特黄蜂',away:'克利夫兰骑士',pick:'克利夫兰骑士 -8.5',odds:'1.91',time:'11月10日 08:00（北京）',published:'11-09 赛前 · 公开参考盘口（-110换算）'}
 ];
 const history=[
   {date:'2026-11-08',league:'英超',match:'布莱顿 2–0 布伦特福德',pick:'布莱顿 主胜（90分钟）',odds:1.95,result:'WIN',recordAt:'发布 11-08 赛前 · 参考赔率'},
