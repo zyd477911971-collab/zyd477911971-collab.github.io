@@ -1,4 +1,5 @@
 const selections=[
+  {league:'NBA',home:'波特兰开拓者',away:'俄克拉荷马城雷霆',pick:'俄克拉荷马城雷霆 独赢',odds:'1.85',time:'11月11日 12:00（北京）',published:'11-10 赛前 · 公开参考赔率（FanDuel -118换算，非锁价）'}
 ];
 const history=[
   {date:'2026-11-10',league:'NBA',match:'夏洛特黄蜂 124–112 克利夫兰骑士',pick:'克利夫兰骑士 -8.5',odds:1.91,result:'LOSS',recordAt:'发布 11-09 赛前 · 参考赔率'},
