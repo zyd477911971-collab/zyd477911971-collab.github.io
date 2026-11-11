@@ -1,4 +1,5 @@
 const selections=[
+  {league:'NBA',home:'孟菲斯灰熊',away:'丹佛掘金',pick:'孟菲斯灰熊 +4.5',odds:'1.88',time:'11月12日 09:00（北京）',published:'11-11 赛前 · 公开参考盘口（DraftKings -114换算）'}
 ];
 const history=[
   {date:'2026-11-11',league:'NBA',match:'波特兰开拓者 123–103 俄克拉荷马城雷霆',pick:'俄克拉荷马城雷霆 独赢',odds:1.85,result:'LOSS',recordAt:'发布 11-10 赛前 · 参考赔率'},
