@@ -1,7 +1,7 @@
 const selections=[
-  {league:'NBA',home:'孟菲斯灰熊',away:'丹佛掘金',pick:'孟菲斯灰熊 +4.5',odds:'1.88',time:'11月12日 09:00（北京）',published:'11-11 赛前 · 公开参考盘口（DraftKings -114换算）'}
 ];
 const history=[
+  {date:'2026-11-12',league:'NBA',match:'孟菲斯灰熊 118–123 丹佛掘金',pick:'孟菲斯灰熊 +4.5',odds:1.88,result:'LOSS',recordAt:'发布 11-11 赛前 · 参考赔率'},
   {date:'2026-11-11',league:'NBA',match:'波特兰开拓者 123–103 俄克拉荷马城雷霆',pick:'俄克拉荷马城雷霆 独赢',odds:1.85,result:'LOSS',recordAt:'发布 11-10 赛前 · 参考赔率'},
   {date:'2026-11-10',league:'NBA',match:'夏洛特黄蜂 124–112 克利夫兰骑士',pick:'克利夫兰骑士 -8.5',odds:1.91,result:'LOSS',recordAt:'发布 11-09 赛前 · 参考赔率'},
   {date:'2026-11-08',league:'英超',match:'布莱顿 2–0 布伦特福德',pick:'布莱顿 主胜（90分钟）',odds:1.95,result:'WIN',recordAt:'发布 11-08 赛前 · 参考赔率'},
