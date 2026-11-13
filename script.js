@@ -1,4 +1,5 @@
 const selections=[
+  {league:'NBA',home:'芝加哥公牛',away:'亚特兰大老鹰',pick:'全场大 246.5 分（含加时）',odds:'1.91',time:'11月14日 09:00（北京）',published:'11-13 赛前 · 用户指定方向 · DraftKings公开参考赔率（-110换算，非锁价）'}
 ];
 const history=[
   {date:'2026-11-13',league:'NBA',match:'菲尼克斯太阳 101–96 夏洛特黄蜂',pick:'全场大 213.5 分（含加时）',odds:1.95,result:'LOSS',recordAt:'发布 11-12 赛前 · 参考赔率'},
