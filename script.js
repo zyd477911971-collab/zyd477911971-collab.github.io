@@ -1,7 +1,7 @@
 const selections=[
-  {league:'NBA',home:'菲尼克斯太阳',away:'夏洛特黄蜂',pick:'全场大 213.5 分（含加时）',odds:'1.95',time:'11月13日 10:00（北京）',published:'11-12 赛前 · 公开参考赔率（FanDuel 大213.5 -105换算，非实时锁价）'}
 ];
 const history=[
+  {date:'2026-11-13',league:'NBA',match:'菲尼克斯太阳 101–96 夏洛特黄蜂',pick:'全场大 213.5 分（含加时）',odds:1.95,result:'LOSS',recordAt:'发布 11-12 赛前 · 参考赔率'},
   {date:'2026-11-12',league:'NBA',match:'孟菲斯灰熊 118–123 丹佛掘金',pick:'孟菲斯灰熊 +4.5',odds:1.88,result:'LOSS',recordAt:'发布 11-11 赛前 · 参考赔率'},
   {date:'2026-11-11',league:'NBA',match:'波特兰开拓者 123–103 俄克拉荷马城雷霆',pick:'俄克拉荷马城雷霆 独赢',odds:1.85,result:'LOSS',recordAt:'发布 11-10 赛前 · 参考赔率'},
   {date:'2026-11-10',league:'NBA',match:'夏洛特黄蜂 124–112 克利夫兰骑士',pick:'克利夫兰骑士 -8.5',odds:1.91,result:'LOSS',recordAt:'发布 11-09 赛前 · 参考赔率'},
