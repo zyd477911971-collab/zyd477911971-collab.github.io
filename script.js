@@ -1,4 +1,5 @@
 const selections=[
+  {league:'欧国联',home:'科索沃',away:'以色列',pick:'科索沃 主胜（90分钟）',odds:'1.89',time:'11月14日 22:00（北京）',published:'11-14 赛前 · 公开参考赔率（1xBet 主胜1.89，非实时锁价）'}
 ];
 const history=[
   {date:'2026-11-14',league:'NBA',match:'芝加哥公牛 125–117 亚特兰大老鹰（加时）',pick:'全场大 246.5 分（含加时）',odds:1.91,result:'LOSS',recordAt:'发布 11-13 赛前 · 用户指定 · 参考赔率'},
