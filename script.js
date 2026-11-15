@@ -1,7 +1,7 @@
 const selections=[
-  {league:'欧国联',home:'科索沃',away:'以色列',pick:'科索沃 主胜（90分钟）',odds:'1.89',time:'11月14日 22:00（北京）',published:'11-14 赛前 · 公开参考赔率（1xBet 主胜1.89，非实时锁价）'}
 ];
 const history=[
+  {date:'2026-11-14',league:'欧国联',match:'科索沃 0–0 以色列',pick:'科索沃 主胜（90分钟）',odds:1.89,result:'LOSS',recordAt:'发布 11-14 赛前 · 参考赔率'},
   {date:'2026-11-14',league:'NBA',match:'芝加哥公牛 125–117 亚特兰大老鹰（加时）',pick:'全场大 246.5 分（含加时）',odds:1.91,result:'LOSS',recordAt:'发布 11-13 赛前 · 用户指定 · 参考赔率'},
   {date:'2026-11-13',league:'NBA',match:'菲尼克斯太阳 101–96 夏洛特黄蜂',pick:'全场大 213.5 分（含加时）',odds:1.95,result:'LOSS',recordAt:'发布 11-12 赛前 · 参考赔率'},
   {date:'2026-11-12',league:'NBA',match:'孟菲斯灰熊 118–123 丹佛掘金',pick:'孟菲斯灰熊 +4.5',odds:1.88,result:'LOSS',recordAt:'发布 11-11 赛前 · 参考赔率'},
